@@ -9,7 +9,7 @@ def element(index, A, B): #нахождение элемента
     for k in range(N):
         res += A[i][k] * B[k][j]
     with open("log.txt", "a") as file:
-        file.write(res)
+        file.write(str(res))
     return res
 
 matrix1 = []
