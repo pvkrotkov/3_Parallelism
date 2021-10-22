@@ -3,7 +3,7 @@ import random
 import time
 
 def element(index, matrix1, matrix2):
-    """получаем элемент произведения строки и столбца"""
+    """получим элемент произведения строки и столбца"""
     i, j = index
     res = 0
     # get a middle dimension
@@ -13,7 +13,7 @@ def element(index, matrix1, matrix2):
     return res
 
 def read_matrix(filename):
-    """читаем матрицу из файла в список списков с типом элементов float"""
+    """читаем матрицу из файла в список списков с элементами типа данных float"""
     try:
         with open (filename, "r") as matrix_file:
             matrix = []
@@ -24,7 +24,7 @@ def read_matrix(filename):
     return matrix
 
 def write_matrix(filename, matrix):
-    """Записываем матрицу в файл"""
+    """Запишем матрицу в файл"""
 
     with open (filename, "w") as matrix_file:
         matrix = "\r".join([' '.join(row) for row in [[str(element) for element in row] for row in matrix]])
@@ -47,14 +47,14 @@ def write_element(filename, index, value, lock):
     return 
         
 def write_immediately(args):
-    """вычисление текущего элемента и его немедленная запись в файл"""
+    """вычисление текущего элемента и его запись в файл"""
     filename, index, matrix1, matrix2 = args
     value = element(index, matrix1, matrix2)
     write_element(filename, index, value, lock)
     return value
 
 def create_arguments(filename, matrix1, matrix2):
-    """создание аргументов для pool'а процессов"""
+    """создание аргументов для pool процессов"""
     indexes = []
     for i in range(len(matrix1)):
         for j in range(len(matrix2[0])):
