@@ -3,7 +3,7 @@ import random
 import time
 
 def element(index, matrix1, matrix2):
-    """получим элемент произведения строки и столбца"""
+    """Получим элемент произведения строки и столбца"""
     i, j = index
     res = 0
     # get a middle dimension
@@ -13,7 +13,7 @@ def element(index, matrix1, matrix2):
     return res
 
 def read_matrix(filename):
-    """читаем матрицу из файла в список списков с элементами типа данных float"""
+    """Читаем матрицу из файла в список списков с элементами типа данных float"""
     try:
         with open (filename, "r") as matrix_file:
             matrix = []
@@ -47,14 +47,14 @@ def write_element(filename, index, value, lock):
     return 
         
 def write_immediately(args):
-    """вычисление текущего элемента и его запись в файл"""
+    """Вычисление текущего элемента и его запись в файл"""
     filename, index, matrix1, matrix2 = args
     value = element(index, matrix1, matrix2)
     write_element(filename, index, value, lock)
     return value
 
 def create_arguments(filename, matrix1, matrix2):
-    """создание аргументов для pool процессов"""
+    """Создание аргументов для pool процессов"""
     indexes = []
     for i in range(len(matrix1)):
         for j in range(len(matrix2[0])):
@@ -62,7 +62,7 @@ def create_arguments(filename, matrix1, matrix2):
     return indexes
 
 def generate_matrix(size, start, end):
-    """генерация случайной целочисленной матрицы"""
+    """Генерация случайной целочисленной матрицы"""
     return [[random.randint(start, end) for _ in range(size)] for _ in range(size)]
 
 def queue_creating(que, matrix_size = 2, start = 0, end = 5):
